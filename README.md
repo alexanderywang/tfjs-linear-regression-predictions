@@ -67,6 +67,8 @@ Tech Stack:
 
 #### Prepping data:
 
+ *Differential privacy* is important to maintain. tensorflow has an optimizer to help with this, but maybe just for python?
+
 **Best practice is to shuffle**
 
 - shuffle randomizes the order of the examples. dataset gets broken into smaller subsets (batches) and shffling helps each batch have a variety of data. We don't want the model to learn in a way dependent on the order of the data or learn structures of subgrohps that don't apply across the entire dataset.
@@ -82,4 +84,24 @@ From TFJS:
 
 - You can normalize your data before turning it into tensors. We do it afterwards because we can take advantage of vectorization in TensorFlow.js to do the min-max scaling operations without writing any explicit for loops.
 
--We want to keep the values we used for normalization during training so that we can un-normalize the outputs to get them back into our original scale and to allow us to normalize future input data the same way.
+- We want to keep the values we used for normalization during training so that we can un-normalize the outputs to get them back into our original scale and to allow us to normalize future input data the same way.
+
+
+#### Training the model
+- after prepping the input and output data into tensor objects, we can train the model given an input - horsepower - and true output -mpg. The model will calculate the weights and bias values of each layer and try to find the best weights that give the most accurate prediciton model. After training, it can make a prediction mpg once given another horsepower input.
+
+- compiling the model: **optimizer** is the algorithm. adam is one. sgd is another. **loss** is a function that shows how well the model is learning on each batch. meanSquaredError compares predictions made by the model with true values.
+
+- batchSize is size of each subset on each iteration of training.  epochs is the number of times model going to look at each dataset. more is better
+
+- model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric
+
+- when done training, it's good to see the loss go down since loss is a measure of error.
+
+
+
+**Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
+
+* a good introduction to deep learning is through regression
+
+- how to deide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing

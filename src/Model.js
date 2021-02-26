@@ -1,8 +1,7 @@
-import React from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as tfvis from "@tensorflow/tfjs-vis";
 
-const createModel = () => {
+export const createModel = () => {
   // create sequential model
   const model = tf.sequential();
   // add single input layer
@@ -13,11 +12,10 @@ const createModel = () => {
   return model;
 };
 
-const Model = () => {
+export const Model = () => {
   const model = createModel();
   tfvis.show.modelSummary({ name: "Model Summary" }, model);
-
-  return <div></div>;
+  return model;
 };
 
-export default Model;
+// export default { createModel, Model };

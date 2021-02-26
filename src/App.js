@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 import Api from "./Api";
 import DataVisualization from "./DataVisualization";
+import { convertToTensor } from "./PreppingData";
+import { trainModel } from "./TrainingTheModel";
+import { createModel } from "./Model";
 
 function App() {
   const [filteredData, setFilteredData] = useState([]);
+  const [trainingStatus, setTrainingStatus] = useState(true);
 
   const filterData = data => {
     const filtered = data
@@ -18,6 +22,18 @@ function App() {
     setFilteredData(filtered);
   };
 
+  const prepAndTrainModel = async () => {
+    // convert the data to tensors
+    const tensorData = convertToTensor(filteredData);
+    const { inputs, labels } = tensorData;
+
+    // train model
+    const model = createModel();
+    console.log(model);
+    await trainModel(model, inputs, labels);
+    console.log("Done Training");
+    setTrainingStatus(false);
+  };
   return (
     <div className="App">
       Hello TensorFlow
@@ -36,6 +52,9 @@ function App() {
       </ul>
       <Api filter={filterData} />
       <DataVisualization cleanedData={filteredData} />
+      <button onClick={prepAndTrainModel}>
+        {trainingStatus ? `Train the model!` : `Training Done!`}
+      </button>
     </div>
   );
 }
