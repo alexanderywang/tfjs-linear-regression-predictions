@@ -40,10 +40,13 @@ Tech Stack:
 - Node.js
 - React
 - Tensorflow.js
-- @tensorflow/tfjs-vis
+- @tensorflow/tfjs-vis https://www.npmjs.com/package/@tensorflow/tfjs-vis
 - Axios
 
 ### Some key learning points
 
 - data often needs to be filtered for relevant information
-- data often needs to be checked for cleanliness -> some missing/null values can throw off models
+- data **needs** to be checked for cleanliness -> some missing/null values can throw off models
+- prepping and formatting data correctly is likely a herculean task as the data set scales up
+
+- Visualizing the data can give us a sense of whether there is any structure to the data that the model can learn.

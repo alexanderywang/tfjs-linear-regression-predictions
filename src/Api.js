@@ -23,7 +23,7 @@ const Api = ({ filter }) => {
       <button onClick={getData}>Get Data</button>
       {carInfo.length ? (
         <>
-          <h4>An example of a car object data:</h4>
+          <h4>An example of a car object data for reference:</h4>
           <h6>Acceleration: {carInfo[0].Acceleration}</h6>
           <h6>Cylinders: {carInfo[0].Cylinders}</h6>
           <h6>Displacement: {carInfo[0].Displacement}</h6>
