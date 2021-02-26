@@ -23,16 +23,24 @@ const Api = ({ filter }) => {
       <button onClick={getData}>Get Data</button>
       {carInfo.length ? (
         <>
-          <h4>An example of a car object data for reference:</h4>
-          <h6>Acceleration: {carInfo[0].Acceleration}</h6>
-          <h6>Cylinders: {carInfo[0].Cylinders}</h6>
-          <h6>Displacement: {carInfo[0].Displacement}</h6>
-          <h6>Horsepower: {carInfo[0].Horsepower}</h6>
-          <h6>Miles_per_Gallon: {carInfo[0].Miles_per_Gallon}</h6>
-          <h6>Name: {carInfo[0].Name}</h6>
-          <h6>Origin: {carInfo[0].Origin}</h6>
-          <h6>Weight_in_lbs: {carInfo[0].Weight_in_lbs}</h6>
-          <h6>Year: {carInfo[0].Year}</h6>
+          <ul
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start"
+            }}
+          >
+            <h4>An example of a car object data for reference:</h4>
+            <li>Acceleration: {carInfo[0].Acceleration}</li>
+            <li>Cylinders: {carInfo[0].Cylinders}</li>
+            <li>Displacement: {carInfo[0].Displacement}</li>
+            <li>Horsepower: {carInfo[0].Horsepower}</li>
+            <li>Miles_per_Gallon: {carInfo[0].Miles_per_Gallon}</li>
+            <li>Name: {carInfo[0].Name}</li>
+            <li>Origin: {carInfo[0].Origin}</li>
+            <li>Weight_in_lbs: {carInfo[0].Weight_in_lbs}</li>
+            <li>Year: {carInfo[0].Year}</li>
+          </ul>
         </>
       ) : (
         <h6>loading...</h6>

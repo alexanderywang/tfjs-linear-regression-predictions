@@ -21,7 +21,13 @@ function App() {
   return (
     <div className="App">
       Hello TensorFlow
-      <ul text-align="left">
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start"
+        }}
+      >
         <li>` (backtick): Shows or hides the visor after getting data</li>
         <li>
           ~ (tilde, shift+backtick): Toggles betweeen the two sizes the visor

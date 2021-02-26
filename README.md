@@ -50,3 +50,9 @@ Tech Stack:
 - prepping and formatting data correctly is likely a herculean task as the data set scales up
 
 - Visualizing the data can give us a sense of whether there is any structure to the data that the model can learn.
+
+- defining and creating the model:
+- from tfjs: ML models are algorithms that take an input and produce an output. When using neural networks, the algorithm is a set of layers of neurons with ‘weights' (numbers) governing their output. The training process learns the ideal values for those weights.
+
+
+
