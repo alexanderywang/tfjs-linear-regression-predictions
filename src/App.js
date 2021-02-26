@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./App.css";
 import Api from "./Api";
 import DataVisualization from "./DataVisualization";
+import Prediction from "./Prediction";
 import { convertToTensor } from "./PreppingData";
 import { trainModel } from "./TrainingTheModel";
 import { createModel } from "./Model";
+import { testModel } from "./TestModel";
 
 function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [trainingStatus, setTrainingStatus] = useState(true);
+  const [finishedModel, setFinishedModel] = useState({});
+  const [normalizationData, setNormalizationData] = useState({});
 
   const filterData = data => {
     const filtered = data
@@ -25,16 +29,21 @@ function App() {
   const prepAndTrainModel = async () => {
     // convert the data to tensors
     const tensorData = convertToTensor(filteredData);
+    // console.log("setting", tensorData);
+    // setNormalizationData(convertToTensor(filteredData));
+    // console.log("normalized", normalizationData);
     const { inputs, labels } = tensorData;
 
     // train model
     const model = createModel();
-    console.log(model);
+    console.log("model:", model);
     await trainModel(model, inputs, labels);
     console.log("Done Training");
+    // setFinishedModel(finishedModel);
+    testModel(model, filteredData, tensorData);
     setTrainingStatus(false);
   };
-  
+
   return (
     <div className="App">
       Hello TensorFlow
@@ -54,8 +63,16 @@ function App() {
       <Api filter={filterData} />
       <DataVisualization cleanedData={filteredData} />
       <button onClick={prepAndTrainModel}>
-        {trainingStatus ? `Train the model!` : `Training Done!`}
+        {trainingStatus
+          ? `Train the model and run test for linear regression!`
+          : `Training Done!`}
       </button>
+      <br />
+      {!trainingStatus && (
+        <>
+          <Prediction />
+        </>
+      )}
     </div>
   );
 }
