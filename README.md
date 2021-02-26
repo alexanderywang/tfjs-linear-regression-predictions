@@ -33,6 +33,7 @@ Extra:
 
 - create a retry function for promise based API calls to simulate potential throttling done by the provider
 - There's a lot of tables, graphs, analysis available at @tensorflow/tfjs-vis
+- some CSS would be nice
 
 Tech Stack:
 
