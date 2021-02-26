@@ -2,7 +2,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as tfvis from "@tensorflow/tfjs-vis";
 
 export const testModel = (model, inputData, normalizationData) => {
-  console.log("in TestModel", model, inputData, normalizationData);
+  // console.log("in TestModel", model, inputData, normalizationData);
   const runTest = (model, inputData, normalizationData) => {
     const { inputMax, inputMin, labelMin, labelMax } = normalizationData;
 
