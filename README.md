@@ -67,18 +67,20 @@ Tech Stack:
 
 #### Prepping data:
 
- *Differential privacy* is important to maintain. tensorflow has an optimizer to help with this, but maybe just for python?
+_Differential privacy_ is important to maintain. tensorflow has an optimizer to help with this, but maybe just for python?
 
 **Best practice is to shuffle**
 
 - shuffle randomizes the order of the examples. dataset gets broken into smaller subsets (batches) and shffling helps each batch have a variety of data. We don't want the model to learn in a way dependent on the order of the data or learn structures of subgrohps that don't apply across the entire dataset.
+
+- tf.util.shuffle takes an array as the only input. If the data is millions of points, splitting data into batches will be better
 
 - converting to tensors. make an array of x values (inputs, horsepower in this case) and an array of y values (labels, mpg in this case). Each array is converted to a 2D tensor. Each tensor is length x 1
 
 **Best practice is to normalize**
 From TFJS:
 
-- We normalize the data. Here we normalize the data into the numerical range 0-1 using min-max scaling. Normalization is important because the internals of many machine learning models you will build with tensorflow.js are designed to work with numbers that are not too big. Common ranges to normalize data to include 0 to 1 or -1 to 1. You will have more success training your models if you get into the habit of normalizing your data to some reasonable range.
+- We normalize the data. Here we normalize the data into the numerical range 0-1 using **min-max scaling**. Normalization is important because the internals of many machine learning models you will build with tensorflow.js are designed to work with numbers that are not too big. Common ranges to normalize data to include 0 to 1 or -1 to 1. You will have more success training your models if you get into the habit of normalizing your data to some reasonable range.
 
 - You should always consider normalizing your data before training. Some datasets can be learned without normalization, but normalizing your data will often eliminate a whole class of problems that would prevent effective learning.
 
@@ -86,15 +88,41 @@ From TFJS:
 
 - We want to keep the values we used for normalization during training so that we can un-normalize the outputs to get them back into our original scale and to allow us to normalize future input data the same way.
 
+formula:
+```
+x' = (x-min(x)) / (max(x) - min(x))
+```
+tensor methods .sub for subtraction and .div for division for min-max scaling formula:
+```
+inputTensor
+      .sub(inputMin)
+      .div(inputMax.sub(inputMin));
+```
+* this is faster than using vanilla JS
+
+- when the model makes predicitons, the return will be in normalized form. To de-normalize to get the mpg prediction, we'll need the min and max tensor values. They are included in the tf.tidy() object returned.
+
+```
+return {
+      inputs: normalizedInputs,
+      labels: normalizedLabels,
+      // Return the min/max bounds so we can use them later.
+      inputMax,
+      inputMin,
+      labelMax,
+      labelMin
+    };
+```
+
 
 #### Training the model
 - after prepping the input and output data into tensor objects, we can train the model given an input - horsepower - and true output -mpg. The model will calculate the weights and bias values of each layer and try to find the best weights that give the most accurate prediciton model. After training, it can make a prediction mpg once given another horsepower input.
 
-- compiling the model: **optimizer** is the algorithm. adam is one. sgd is another. **loss** is a function that shows how well the model is learning on each batch. meanSquaredError compares predictions made by the model with true values.
+- compiling the model: **optimizer** is the algorithm. adam is one. sgd (stochastic gradient descent) is another. adam is sort of like gradient descent but has less configuration and is recommended by TFJS. **loss** is a function that shows how well the model is learning on each batch, calculating the magnitude of the error. meanSquaredError (mse) compares predictions made by the model with true values.
 
 - batchSize is size of each subset on each iteration of training.  epochs is the number of times model going to look at each dataset. more is better
 
-- model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric
+- model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric and is optional. 
 
 - when done training, it's good to see the loss go down since loss is a measure of error.
 
@@ -105,3 +133,4 @@ From TFJS:
 * a good introduction to deep learning is through regression
 
 - how to deide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing
+````

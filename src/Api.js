@@ -20,7 +20,7 @@ const Api = ({ filter }) => {
 
   return (
     <div>
-      <button onClick={getData}>Get Data and check out the graph</button>
+      <button onClick={getData}>Get Data FIRST and check out the graph</button>
       {carInfo.length ? (
         <>
           <ul

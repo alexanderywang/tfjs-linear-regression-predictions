@@ -34,6 +34,7 @@ function App() {
     console.log("Done Training");
     setTrainingStatus(false);
   };
+  
   return (
     <div className="App">
       Hello TensorFlow
