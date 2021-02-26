@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Api from "./Api";
 
 function App() {
   return (
     <div className="App">
-      
+      Hello TensorFlow
+      <Api />
     </div>
   );
 }
