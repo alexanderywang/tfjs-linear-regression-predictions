@@ -42,3 +42,8 @@ Tech Stack:
 - Tensorflow.js
 - @tensorflow/tfjs-vis
 - Axios
+
+### Some key learning points
+
+- data often needs to be filtered for relevant information
+- data often needs to be checked for cleanliness -> some missing/null values can throw off models
