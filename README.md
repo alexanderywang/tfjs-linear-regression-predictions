@@ -61,14 +61,14 @@ model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
 
 ### Some key learning points
 
-![car object](/public/car object.png)
+![car object](/public/car_object.png)
 
 - data often needs to be filtered for relevant information
 - data **needs** to be checked for cleanliness -> some missing/null values can throw off models
 - prepping and formatting data correctly is likely a herculean task as the data set scales up
 
 - Visualizing the data can give us a sense of whether there is any structure to the data that the model can learn.
-  ![Initial Data](/public/initial data.png)
+  ![Initial Data](/public/initial_data.png)
 
 - defining and creating the model:
 - from tfjs: ML models are algorithms that take an input and produce an output. When using neural networks, the algorithm is a set of layers of neurons with ‘weights' (numbers) governing their output. The training process learns the ideal values for those weights.
@@ -149,7 +149,7 @@ return {
 
 - when done training, it's good to see the loss go down since loss is a measure of error.
 
-![training](/public/training and test model.png)
+![training](/public/training_and_test_model.png)
 
 #### Making Predictions
 
@@ -163,7 +163,7 @@ return {
 
 - unsure why singular prediction model spits out a negative number. ??
 
-![User input](/public/user input.png)
+![User input](/public/user_input.png)
 
 #### Takeaways
 
