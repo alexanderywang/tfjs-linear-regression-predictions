@@ -11,8 +11,7 @@ import { testModel } from "./TestModel";
 function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [trainingStatus, setTrainingStatus] = useState(true);
-  const [finishedModel, setFinishedModel] = useState({});
-  const [normalizationData, setNormalizationData] = useState({});
+  const [model, setModel] = useState({});
 
   const filterData = data => {
     const filtered = data
@@ -29,17 +28,14 @@ function App() {
   const prepAndTrainModel = async () => {
     // convert the data to tensors
     const tensorData = convertToTensor(filteredData);
-    // console.log("setting", tensorData);
-    // setNormalizationData(convertToTensor(filteredData));
-    // console.log("normalized", normalizationData);
     const { inputs, labels } = tensorData;
 
     // train model
     const model = createModel();
     console.log("model:", model);
     await trainModel(model, inputs, labels);
+    setModel(model);
     console.log("Done Training");
-    // setFinishedModel(finishedModel);
     testModel(model, filteredData, tensorData);
     setTrainingStatus(false);
   };
@@ -70,7 +66,7 @@ function App() {
       <br />
       {!trainingStatus && (
         <>
-          <Prediction />
+          <Prediction model={model} />
         </>
       )}
     </div>

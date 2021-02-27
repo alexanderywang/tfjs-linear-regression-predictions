@@ -31,11 +31,21 @@ https://js.tensorflow.org/api_vis/latest/
 
 Extra:
 
+- the tutorial runs a set of 100 example horsepower to test the model predictions. see if i can let user input a single horsepower and return a prediction.
 - create a retry function for promise based API calls to simulate potential throttling done by the provider
 - There's a lot of tables, graphs, analysis available at @tensorflow/tfjs-vis
 - some CSS would be nice
+- try making epochs dynamic and see how many you need
+- try increasing number of units in the hidden layer
+- try adding more hidden layers in between the first hidden layer and the final output layer. something like:
 
-Tech Stack:
+```
+model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
+```
+
+- see if you can have a non-linear curve fit the data instead
+
+### Tech Stack:
 
 - Node.js
 - React
@@ -89,18 +99,22 @@ From TFJS:
 - We want to keep the values we used for normalization during training so that we can un-normalize the outputs to get them back into our original scale and to allow us to normalize future input data the same way.
 
 formula:
+
 ```
 x' = (x-min(x)) / (max(x) - min(x))
 ```
+
 tensor methods .sub for subtraction and .div for division for min-max scaling formula:
+
 ```
 inputTensor
       .sub(inputMin)
       .div(inputMax.sub(inputMin));
 ```
-* this is faster than using vanilla JS
 
-- when the model makes predicitons, the return will be in normalized form. To de-normalize to get the mpg prediction, we'll need the min and max tensor values. They are included in the tf.tidy() object returned.
+- this is faster than using vanilla JS
+
+* when the model makes predicitons, the return will be in normalized form. To de-normalize to get the mpg prediction, we'll need the min and max tensor values. They are included in the tf.tidy() object returned.
 
 ```
 return {
@@ -114,14 +128,13 @@ return {
     };
 ```
 
-
 #### Training the model
 
 - after prepping the input and output data into tensor objects, we can train the model given an input - horsepower - and true output -mpg. The model will calculate the weights and bias values of each layer and try to find the best weights that give the most accurate prediciton model. After training, it can make a prediction mpg once given another horsepower input.
 
 - compiling the model: **optimizer** is the algorithm. adam is one. sgd (stochastic gradient descent) is another. adam is sort of like gradient descent but has less configuration and is recommended by TFJS. **loss** is a function that shows how well the model is learning on each batch, calculating the magnitude of the error. meanSquaredError (mse) compares predictions made by the model with true values.
 
-- batchSize is size of each subset on each iteration of training.  epochs is the number of times model going to look at each dataset. more is better
+- batchSize is size of each subset on each iteration of training. epochs is the number of times model going to look at each dataset. more is better
 
 - model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric and is optional.
 
@@ -137,9 +150,18 @@ return {
 
 - plot data with tfvis
 
+- unsure why singular prediction model spits out a negative number. ??
+
+#### Takeaways
+
+Formulate your task:
+
+- Is it a regression problem or a classification one?
+- Can this be done with supervised learning or unsupervised learning?
+- What is the shape of the input data? What should the output data look like?
+
 **Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
 
-* a good introduction to deep learning is through regression
+- a good introduction to deep learning is through regression
 
-- how to deide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing
-````
+* how to deide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing
