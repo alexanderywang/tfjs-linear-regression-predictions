@@ -12,6 +12,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [trainingStatus, setTrainingStatus] = useState(true);
   const [model, setModel] = useState({});
+  const [epochs, setEpochs] = useState(50);
 
   const filterData = data => {
     const filtered = data
@@ -33,13 +34,16 @@ function App() {
     // train model
     const model = createModel();
     console.log("model:", model);
-    await trainModel(model, inputs, labels);
+    await trainModel(model, inputs, labels, epochs);
     setModel(model);
     console.log("Done Training");
     testModel(model, filteredData, tensorData);
     setTrainingStatus(false);
   };
 
+  const onChange = e => {
+    setEpochs(e.target.value * 1);
+  };
   return (
     <div className="App">
       Hello TensorFlow
@@ -58,19 +62,25 @@ function App() {
       </ul>
       <Api filter={filterData} />
       <DataVisualization cleanedData={filteredData} />
+      <RecordEpochs onChange={onChange} />
       <button onClick={prepAndTrainModel}>
         {trainingStatus
           ? `Train the model and run test for linear regression!`
           : `Training Done!`}
       </button>
       <br />
-      {!trainingStatus && (
-        <>
-          <Prediction model={model} />
-        </>
-      )}
+      {!trainingStatus && <Prediction model={model} />}
     </div>
   );
 }
 
 export default App;
+
+const RecordEpochs = ({ onChange }) => {
+  return (
+    <form>
+      <input type="number" name="epochs" onChange={onChange} />
+      <span>How many epochs to run?</span>
+    </form>
+  );
+};

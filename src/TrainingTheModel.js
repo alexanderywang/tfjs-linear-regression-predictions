@@ -1,7 +1,7 @@
 import * as tf from "@tensorflow/tfjs";
 import * as tfvis from "@tensorflow/tfjs-vis";
 
-export const trainModel = async (model, inputs, labels) => {
+export const trainModel = async (model, inputs, labels, epochs) => {
   // prep model for training.
   model.compile({
     optimizer: tf.train.adam(),
@@ -10,7 +10,7 @@ export const trainModel = async (model, inputs, labels) => {
   });
 
   const batchSize = 32;
-  const epochs = 50;
+  // const epochs = 50; // make dynamic
 
   return await model.fit(inputs, labels, {
     batchSize,
