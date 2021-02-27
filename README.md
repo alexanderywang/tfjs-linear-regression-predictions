@@ -116,17 +116,26 @@ return {
 
 
 #### Training the model
+
 - after prepping the input and output data into tensor objects, we can train the model given an input - horsepower - and true output -mpg. The model will calculate the weights and bias values of each layer and try to find the best weights that give the most accurate prediciton model. After training, it can make a prediction mpg once given another horsepower input.
 
 - compiling the model: **optimizer** is the algorithm. adam is one. sgd (stochastic gradient descent) is another. adam is sort of like gradient descent but has less configuration and is recommended by TFJS. **loss** is a function that shows how well the model is learning on each batch, calculating the magnitude of the error. meanSquaredError (mse) compares predictions made by the model with true values.
 
 - batchSize is size of each subset on each iteration of training.  epochs is the number of times model going to look at each dataset. more is better
 
-- model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric and is optional. 
+- model.fit is called to start the training. it is asynchronous. the callback generates functions that plot charts for the loss and mse metric and is optional.
 
 - when done training, it's good to see the loss go down since loss is a measure of error.
 
+#### Making Predictions
 
+- generating 100 new examples to feed to the model. Use model.predict, keeping the same shape ([num_examples, num_features_per_example]) as training.
+
+- invert operations and de-normalize
+
+- .dataSync() is a method we can use to get a typedarray of the values stored in a tensor. This allows us to process those values in regular JavaScript. This is a synchronous version of the .data() method which is generally preferred.
+
+- plot data with tfvis
 
 **Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
 
