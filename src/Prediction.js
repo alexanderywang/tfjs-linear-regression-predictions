@@ -15,8 +15,8 @@ const Prediction = ({ model }) => {
     makePrediction();
   };
   const makePrediction = () => {
-    // const value = model.predict(tf.tensor([userHPInput * 1])); // works and is more generic
-    const value = model.predict(tf.tensor2d([userHPInput * 1], [1, 1]));
+    const value = model.predict(tf.tensor([userHPInput * 1])); // works better than tensor2d and is more generic
+    // const value = model.predict(tf.tensor2d([userHPInput * 1], [1, 1]));
     // console.log(
     //   "prediction value",
     //   value.dataSync(),
@@ -24,7 +24,7 @@ const Prediction = ({ model }) => {
     //   value.dataSync()[0]
     // );
     // unsure why value is negative
-    setPrediction(Math.abs(value.dataSync()[0]).toFixed(4));
+    setPrediction(Math.abs(value.dataSync()[0]));
   };
 
   return (

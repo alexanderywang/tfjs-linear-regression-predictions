@@ -6,8 +6,8 @@ export const createModel = () => {
   const model = tf.sequential();
   // add single input layer
   model.add(tf.layers.dense({ inputShape: [1], units: 1, useBias: true }));
-  // extra - add sigmoidal layer? interesting
-  model.add(tf.layers.dense({ units: 50, activation: "sigmoid" }));
+  // extra - add sigmoidal layer? interesting but seems less accurate
+  // model.add(tf.layers.dense({ units: 50, activation: "sigmoid" }));
   // add output layer
   model.add(tf.layers.dense({ units: 1, useBias: true }));
 
