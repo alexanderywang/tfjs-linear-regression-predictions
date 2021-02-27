@@ -29,7 +29,13 @@ I'll define and train a model given a dataset and then input a horsepower that t
 using @tensorflow/tfjs-vis for the scatterplot.
 https://js.tensorflow.org/api_vis/latest/
 
-Extra:
+### Some additional Features on top of the tutorial
+- React, React Hooks, functional components, pure functions, async/await, modern ES6 syntax
+- Can take in a single horsepower input from user and return a prediction 
+- Accepts a dynamic epoch parameter from the user to train the model and displayed in the tfvis visor while training
+- functions are modularized and additional hidden layers are easy to add. A sigmoidal layer is added and commented out in the file
+
+#### Extra:
 
 - the tutorial runs a set of 100 example horsepower to test the model predictions. see if i can let user input a single horsepower and return a prediction.
 - create a retry function for promise based API calls to simulate potential throttling done by the provider
