@@ -1,7 +1,7 @@
 ## Tensorflow JS Linear Regression
 
 The Tensorflow.js tutorial uses script tag as the entry point for loading files. I'll install via npm and use Create React App and attempt to modularize where possible.
-I'll refer and refactor the code from the two-dimensional linear regression tutorial on Tensorflow JS is found here:
+I'll refer and refactor the code from the two-dimensional linear regression tutorial on Tensorflow JS found here:
 
 https://codelabs.developers.google.com/codelabs/tfjs-training-regression#0
 
