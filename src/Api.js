@@ -12,10 +12,14 @@ const Api = ({ filter }) => {
   const [carInfo, setCarInfo] = useState([]);
 
   const getData = async () => {
-    const { data } = await axios(URL);
-    console.log(data);
-    setCarInfo(data);
-    filter(data);
+    try {
+      const { data } = await axios(URL);
+      console.log(data);
+      setCarInfo(data);
+      filter(data);
+    } catch (err) {
+      throw err;
+    }
   };
 
   return (
