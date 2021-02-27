@@ -171,6 +171,6 @@ Formulate your task:
 
 **Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
 
-- a good introduction to deep learning is through regression
+- a good introduction to deep learning is through linear regression
 
-* how to deide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing
+* how to decide the number of layer and nodes of memory intensive layers like LSTM? trial and error, run experiments, keras tuning can search through layers for optimizing
