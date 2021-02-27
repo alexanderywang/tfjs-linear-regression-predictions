@@ -160,6 +160,9 @@ Formulate your task:
 - Can this be done with supervised learning or unsupervised learning?
 - What is the shape of the input data? What should the output data look like?
 
+- epochs are now dynamic. running 500 does take more time than 50 but is interesting to see the model run
+- sigmoidal layer creates some curve, but not a best fit curve. worth exploring here...
+
 **Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
 
 - a good introduction to deep learning is through regression
