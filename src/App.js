@@ -80,6 +80,7 @@ const RecordEpochs = ({ onChange }) => {
   return (
     <form>
       <input type="number" name="epochs" onChange={onChange} />
+      <br />
       <span>How many epochs to run?</span>
     </form>
   );
