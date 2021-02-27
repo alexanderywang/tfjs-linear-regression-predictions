@@ -45,13 +45,19 @@ model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
 
 - see if you can have a non-linear curve fit the data instead
 
-### Tech Stack:
+## Tech Stack:
 
-- Node.js
-- React
-- Tensorflow.js
-- @tensorflow/tfjs-vis https://www.npmjs.com/package/@tensorflow/tfjs-vis
-- Axios
+- [Node.js](https://nodejs.org/en/)
+- [React](https://facebook.github.io/react/)
+- [Tensorflow.js](https://www.tensorflow.org/js/)
+- [@tensorflow/tfjs-vis](https://www.npmjs.com/package/@tensorflow/tfjs-vis)
+- [Axios](https://www.npmjs.com/package/axios)
+
+## Local Setup
+
+1. Run `git clone https://github.com/alexanderywang/tfjs-linear-regression-predictions` and navigate to the project folder
+2. Run `npm install`
+3. Run `npm run start` to start the app on http://localhost:3000/
 
 ### Some key learning points
 
