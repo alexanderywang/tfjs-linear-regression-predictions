@@ -50,6 +50,7 @@ model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
 ```
 
 - see if you can have a non-linear curve fit the data instead
+- could be interesting to allow the user to match any inputs and output to see if there is a determinable and predictable relationship
 
 ## Tech Stack:
 
