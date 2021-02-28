@@ -185,7 +185,7 @@ Formulate your task:
 
 **Javascript in Machine Learning is relatively new and it's important that users can use your models and ideas interactively in the browser without having to install anything**
 
-**CLIENT SIDE BENEFITS THAT ARE HARD TO ACHIEVE SERVER SIDE:**
+**CLIENT SIDE BENEFITS THAT ARE HARDER TO ACHIEVE SERVER SIDE:**
 - Privacy is ensured
 - Lower latency
 - Lower cost
