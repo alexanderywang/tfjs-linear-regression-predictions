@@ -40,7 +40,7 @@ https://js.tensorflow.org/api_vis/latest/
 - the tutorial runs a set of 100 example horsepower to test the model predictions. see if i can let user input a single horsepower and return a prediction.
 - create a retry function for promise based API calls to simulate potential throttling done by the provider
 - There's a lot of tables, graphs, analysis available at @tensorflow/tfjs-vis
-- some CSS would be nice
+- some CSS would be nice, this is really bare bones :)
 - try making epochs dynamic and see how many you need
 - try increasing number of units in the hidden layer
 - try adding more hidden layers in between the first hidden layer and the final output layer. something like:
