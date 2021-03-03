@@ -37,12 +37,13 @@ https://js.tensorflow.org/api_vis/latest/
 
 #### Extra:
 
-- the tutorial runs a set of 100 example horsepower to test the model predictions. see if i can let user input a single horsepower and return a prediction.
+- the tutorial runs a set of 100 example horsepower to test the model predictions. see if i can let user input a single horsepower and return a prediction. - check, but the predictions don't look that great
 - create a retry function for promise based API calls to simulate potential throttling done by the provider
-- There's a lot of tables, graphs, analysis available at @tensorflow/tfjs-vis
-- some CSS would be nice, this is really bare bones :)
-- try making epochs dynamic and see how many you need
-- try increasing number of units in the hidden layer
+- There's a lot of tables, graphs, analysis available at @tensorflow/tfjs-vis. play around with some more
+- some CSS would be nice, this is really, really bare bones :)
+- try making epochs dynamic and see how many you need. - check, made with hooks
+- improve the epoch adjustment by intergrating a reset, play, step buttons that reset, increment, and increment by 1
+- try increasing number of units in the hidden layer. - check added a sigmoidal layer
 - try adding more hidden layers in between the first hidden layer and the final output layer. something like:
 
 ```
